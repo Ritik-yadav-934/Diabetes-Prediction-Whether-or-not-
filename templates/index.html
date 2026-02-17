@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            margin: 40px auto;
+            width: 400px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px gray;
+        }
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+        button {
+            padding: 10px;
+            width: 95%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Diabetes Prediction</h2>
+
+    <form action="/predict" method="post">
+        <input type="number" step="any" name="Pregnancies" placeholder="Pregnancies" required>
+        <input type="number" step="any" name="Glucose" placeholder="Glucose" required>
+        <input type="number" step="any" name="BloodPressure" placeholder="Blood Pressure" required>
+        <input type="number" step="any" name="SkinThickness" placeholder="Skin Thickness" required>
+        <input type="number" step="any" name="Insulin" placeholder="Insulin" required>
+        <input type="number" step="any" name="BMI" placeholder="BMI" required>
+        <input type="number" step="any" name="DiabetesPedigreeFunction" placeholder="Diabetes Pedigree Function" required>
+        <input type="number" step="any" name="Age" placeholder="Age" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
